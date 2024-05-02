@@ -245,6 +245,12 @@ div.CodeMirror.cm-s-default {
 div.sagecell .CodeMirror-scroll { /* show entire input lines */
   max-height: none;
 }  
+div.sagecell_sessionOutput {
+  border: 0.5px lightgrey solid;
+  font-size: 14px;
+  font-family: Monaco, monospace;
+  max-height: none;
+}  
 
 table {
   width: auto;
