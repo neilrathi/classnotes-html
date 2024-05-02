@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
+<script>
+    const macros = {
+        "\\bvec": "\\langle #1 \\rangle",
+        "\\ZZ": "\\mathbf{Z}",
+        "\\RR": "\\mathbf{R}",
+        "\\CC": "\\mathbf{C}",
+        "\\QQ": "\\mathbf{Q}",
+        "\\EE": "\\mathbf{E}",
+        "\\FF": "\\mathbf{F}",
+        "\\Gal": "\\operatorname{Gal}",
+        "\\Syl": "\\operatorname{Syl}",
+        "\\Mat": "\\operatorname{Mat}",
+        "\\Hom": "\\operatorname{Hom}",
+        "\\Aut": "\\operatorname{Aut}",
+        "\\lcm": "\\operatorname*{lcm}",
+        "\\argmin": "\\operatorname*{arg\\,min}",
+        "\\argmax": "\\operatorname*{arg\\,max}",
+        "\\psub": "\\subseteq",
+        "\\qeq": "\\overset{?}{=}",
+        "\\p": "\\left( #1 \\right)",
+        "\\floor": "\\left\\lfloor #1 \\right\\rfloor",
+        "\\ceil": "\\left\\lceil #1 \\right\\rceil",
+        "\\bvec": "\\left\\langle #1 \\right\\rangle"
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            macros: macros,
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ]
+        });
+    });
+</script>
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+<script>
+sagecell.makeSagecell({inputLocation: 'div.compute', evalButtonText: 'Evaluate', hide : ['fullScreen', 'permalink']});
+</script>

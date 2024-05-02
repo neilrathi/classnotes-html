@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+body {
+  background-color: #fff;
+  padding:50px 25px 50px 25px;
+  max-width: 750px;
+  margin:0 auto;
+  font: 14px/1.5 Georgia, serif;
+  font-weight:400;
+  counter-reset: postulate thrm defn lemma figures tables;
+}
+
+h1 {
+  color:#222;
+  margin:0 0 5px;
+  font-weight: normal;
+}
+
+h2, h3, h4, h5, h6 {
+  color:#222;
+  margin:20px 0 10px;
+}
+
+p, ul, ol, table, pre, dl {
+  margin:0 0 20px;
+}
+
+h3 + ul {
+  margin-top: -10px;
+}
+
+h1, h2, h3 {
+  line-height:1.1;
+}
+
+h1 {
+  font-size:28px;
+}
+
+a {
+  color:#267CB9;
+  text-decoration:none;
+}
+
+a:hover, a:focus {
+  color:#044291;
+}
+
+code, pre {
+  font-family: "Inconsolata", Menlo, monospace;
+  font-weight: 500;
+  color:#333;
+}
+
+img {
+  max-width:100%;
+}
+
+header {
+  width:190px;
+  float:left;
+  position:fixed;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+section {
+  width:550px;
+  float:right;
+  padding-bottom:50px;
+}
+
+strong {
+  color:#222;
+  font-weight:700;
+}
+
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:50px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+@media print, screen and (max-width: 960px) {
+
+  div.wrapper {
+    width:auto;
+    margin:0;
+  }
+
+  header, section, footer {
+    float:none;
+    position:static;
+    width:auto;
+  }
+
+  header {
+    padding-right:320px;
+  }
+
+  section {
+    border:1px solid #e5e5e5;
+    border-width:1px 0;
+    padding:20px 0;
+    margin:0 0 20px;
+  }
+
+  header a small {
+    display:inline;
+  }
+
+  header ul {
+    position:absolute;
+    right:50px;
+    top:52px;
+  }
+}
+
+@media print, screen and (max-width: 720px) {
+  body {
+    word-wrap:break-word;
+  }
+
+  header {
+    padding:0;
+  }
+
+  header ul, header p.view {
+    position:static;
+  }
+
+  pre, code {
+    word-wrap:normal;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  body {
+    padding:15px;
+  }
+
+  .downloads {
+    width:99%;
+  }
+
+  .downloads li, .downloads li + li + li {
+    width:33%;
+  }
+}
+
+@media print {
+  body {
+    padding:0.4in;
+    font-size:12pt;
+    color:#444;
+  }
+}
+
+.center-this-thing {
+  text-align: center;
+}
+
+div.box {
+  background-color: #fafafa;
+  border:  0.5px solid #242424;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+div.defn {
+  counter-increment: defn;
+}
+div.thrm {
+  counter-increment: thrm;
+}
+div.lemma {
+  counter-increment: lemma;
+}
+div.postulate {
+  counter-increment: postulate;
+}
+
+div.thrm::before {
+  counter-increment: thrm; 
+  content: "Theorem " counter(thrm) ". ";
+  font-weight: bold; 
+}
+
+div.postulate::before {
+  counter-increment: postulate; 
+  content: "Postulate " counter(postulate) ". ";
+  font-weight: bold; 
+}
+
+div.lemma::before {
+  counter-increment: lemma; 
+  content: "Lemma " counter(lemma) ". "; 
+  font-weight: bold;
+}
+
+div.defn::before {
+  content: "Definition " counter(defn) ". "; 
+  font-weight: bold;
+}
+
+div.box p {
+  margin-bottom: 0px;
+}
+
+button.sagecell_evalButton.ui-button.ui-corner-all.ui-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  margin: 1px;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  color: #3D3D3D;
+  background: #fff;
+  border: lightgrey 0.5px solid;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+button.sagecell_evalButton.ui-button.ui-corner-all.ui-widget:hover {
+  color: #fff;
+  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+  background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  cursor: pointer;
+}
+div.CodeMirror.cm-s-default {
+  border: 0.5px lightgrey solid;
+  font-size: 12px;
+  font-family: Monaco, monospace;
+  max-height: none;
+}
+div.sagecell .CodeMirror-scroll { /* show entire input lines */
+  max-height: none;
+}  
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+  min-width: 75px;
+}
+
+thead th {
+  border-top: 2px solid #000; /* Represents \toprule */
+  border-bottom: 1px solid #000; /* Represents \toprule */
+}
+
+tbody tr:last-child td {
+  border-bottom: 2px solid #000; /* Represents \bottomrule */
+}
+
+figure {
+  max-width: 60%;
+  width: auto;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  counter-increment: figures;
+}
+
+figure figcaption:before {
+  content: 'Figure ' counter(figures) '. ';
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>docs</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
+  <script>
+      const macros = {
+          "\\bvec": "\\langle #1 \\rangle",
+          "\\ZZ": "\\mathbf{Z}",
+          "\\RR": "\\mathbf{R}",
+          "\\CC": "\\mathbf{C}",
+          "\\QQ": "\\mathbf{Q}",
+          "\\EE": "\\mathbf{E}",
+          "\\FF": "\\mathbf{F}",
+          "\\Gal": "\\operatorname{Gal}",
+          "\\Syl": "\\operatorname{Syl}",
+          "\\Mat": "\\operatorname{Mat}",
+          "\\Hom": "\\operatorname{Hom}",
+          "\\Aut": "\\operatorname{Aut}",
+          "\\lcm": "\\operatorname*{lcm}",
+          "\\argmin": "\\operatorname*{arg\\,min}",
+          "\\argmax": "\\operatorname*{arg\\,max}",
+          "\\psub": "\\subseteq",
+          "\\qeq": "\\overset{?}{=}",
+          "\\p": "\\left( #1 \\right)",
+          "\\floor": "\\left\\lfloor #1 \\right\\rfloor",
+          "\\ceil": "\\left\\lceil #1 \\right\\rceil",
+          "\\bvec": "\\left\\langle #1 \\right\\rangle"
+      };
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              macros: macros,
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "\\(", right: "\\)", display: false},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\[", right: "\\]", display: true}
+              ]
+          });
+      });
+  </script>
+  <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+  <script>
+  sagecell.makeSagecell({inputLocation: 'div.compute', evalButtonText: 'Evaluate', hide : ['fullScreen', 'permalink']});
+  </script>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+</head>
+<body>
+<h1 id="classnotes-html"><code>classnotes-html</code></h1>
+<p><em>markdown-to-html for lectures</em></p>
+<p>This is a pipeline for writing notes in markdown and converting them
+to pretty pseudo-LaTeX’d HTML. It comes with a custom style file, KaTeX,
+and some pre-defined environments and shorthands for things that I do.
+It is <em>very</em> minimal compared to my LaTeX package <a
+href="https://github.com/neilrathi/classnotes">classnotes</a>.</p>
+<p>Obviously there is a reasonable amount going on behind-the-scenes,
+but most of the work is done with pandoc. To transform a markdown doc
+into HTML, run</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-c</span> style.css <span class="at">--include-in-header</span> header.html <span class="at">--katex</span> <span class="at">--lua-filter</span><span class="op">=</span>filter.lua <span class="at">-s</span> FILE.md <span class="at">-o</span> FILE.html</span></code></pre></div>
+<h2 id="usage">Usage</h2>
+<p>There are four custom ‘theorem-like’ environments: <code>thrm</code>,
+<code>defn</code>, <code>postulate</code>, and <code>lemma</code>. Use
+```<code>env</code> delimiters to initialize these. Numbering is
+automatically incremented.</p>
+<div class="defn box">A loss function $J : \Theta \to \mathbf{R}$ is a <em>distance metric</em>
+that quantifies how far functions parametrized by $\theta$
+deviate in their output from an oracle.</div>
+<p>Display math uses double dollar $$ wrappers. Say we have a function
+<span class="math display">
+J(\theta) = \frac{1}{2N} \sum_{i=1}^{N} \left(h_{\theta}(x^{(i)}) -
+y^{(i)}\right)^2
+</span> which we would like to minimize. We can do this in a Python code
+cell, wrapped with the ```<code>python</code> delimiter as below:</p>
+<div class="compute"><script type="text/x-python">
+import numpy as np
+
+X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
+y = np.array([6, 8, 9, 11])
+
+w = np.zeros(X.shape[1])
+lr = 0.01
+
+for _ in range(1000):
+    w -= lr * X.T.dot(X.dot(w) - y) / len(y)
+
+print(w)
+</script></div>
+<p>Tables and figures use standard markdown syntax. You can also use
+gifs.</p>
+<figure>
+<img src="./angle_from_cosine.gif" title="alt text"
+alt="Constructing \theta from \cos\theta" />
+<figcaption aria-hidden="true">Constructing <span
+class="math inline">\theta</span> from <span
+class="math inline">\cos\theta</span></figcaption>
+</figure>
+<p>Tables are rendered as in the <code>booktabs</code> package.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column 1</th>
+<th>Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>hello</td>
+<td>goodbye</td>
+</tr>
+<tr class="even">
+<td>wahoo</td>
+<td>wahooo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-details">Implementation Details</h2>
+<p>Pandoc is doing most of the conversion. The <code>style.css</code>
+file contains all CSS used; most of this is standard. I use CSS3
+counters to auto-number definitions/figures/etc.
+<code>header.html</code> imports important KaTeX information.</p>
+<p>The Lua file <code>filter.lua</code> deals with converting shorthand
+environments into the underlying HTML divs. Code cells are implemented
+with <a href="https://sagecell.sagemath.org">SageCell</a>.</p>
+</body>
+</html>
