@@ -8,6 +8,8 @@ Obviously there is a reasonable amount going on behind-the-scenes, but most of t
 pandoc -c style.css --include-in-header header.html --katex --lua-filter=filter.lua -s FILE.md -o FILE.html
 ```
 
+This source file is available on [Github](https://github.com/neilrathi/classnotes-html/blob/main/docs.md).
+
 ## Usage
 
 There are four custom 'theorem-like' environments: `thrm`, `defn`, `postulate`, and `lemma`. Use \`\`\``env` delimiters to initialize these. Numbering is automatically incremented.

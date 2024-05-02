@@ -161,6 +161,8 @@ but most of the work is done with pandoc. To transform a markdown doc
 into HTML, run</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-c</span> style.css <span class="at">--include-in-header</span> header.html <span class="at">--katex</span> <span class="at">--lua-filter</span><span class="op">=</span>filter.lua <span class="at">-s</span> FILE.md <span class="at">-o</span> FILE.html</span></code></pre></div>
+<p>This source file is available on <a
+href="https://github.com/neilrathi/classnotes-html/blob/main/docs.md">Github</a>.</p>
 <h2 id="usage">Usage</h2>
 <p>There are four custom ‘theorem-like’ environments: <code>thrm</code>,
 <code>defn</code>, <code>postulate</code>, and <code>lemma</code>. Use
