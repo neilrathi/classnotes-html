@@ -129,8 +129,9 @@
   <script>
   sagecell.makeSagecell({inputLocation: 'div.compute', evalButtonText: 'Evaluate', hide : ['fullScreen', 'permalink']});
   </script>
+  <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
   <script defer=""
-  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -146,19 +147,21 @@
 }}});
   </script>
   <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 </head>
 <body>
 <h1 id="classnotes-html"><code>classnotes-html</code></h1>
 <p><em>markdown-to-html for lectures</em></p>
 <p>This is a pipeline for writing notes in markdown and converting them
-to pretty pseudo-LaTeX’d HTML. It comes with a custom style file, KaTeX,
-and some pre-defined environments and shorthands for things that I do.
-It is <em>very</em> minimal compared to my LaTeX package <a
+to pretty pseudo-LaTeX’d HTML.<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a> It comes with KaTeX,
+‘interactive’ functions, and pre-defined theorem environments. It is
+based on my LaTeX package <a
 href="https://github.com/neilrathi/classnotes">classnotes</a>.</p>
 <p>Obviously there is a reasonable amount going on behind-the-scenes,
 but most of the work is done with pandoc. To transform a markdown doc
-into HTML, run</p>
+into HTML, run<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-c</span> style.css <span class="at">--include-in-header</span> header.html <span class="at">--katex</span> <span class="at">--lua-filter</span><span class="op">=</span>filter.lua <span class="at">-s</span> FILE.md <span class="at">-o</span> FILE.html</span></code></pre></div>
 <p>This source file is available on <a
@@ -171,8 +174,9 @@ automatically incremented.</p>
 <div class="defn box">A loss function $J : \Theta \to \mathbf{R}$ is a <em>distance metric</em>
 that quantifies how far functions parametrized by $\theta$
 deviate in their output from an oracle.</div>
-<p>Display math uses double dollar $$ wrappers. Say we have a function
-<span class="math display">
+<p>Display math uses double dollar $$ wrappers.<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Say
+we have a function <span class="math display">
 J(\theta) = \frac{1}{2N} \sum_{i=1}^{N} \left(h_{\theta}(x^{(i)}) -
 y^{(i)}\right)^2
 </span> which we would like to minimize. We can do this in a Python code
@@ -191,10 +195,29 @@ for _ in range(1000):
 
 print(w)
 </script></div>
+<p>Graphs are automatically constructed from equations using the Desmos
+API.</p>
+<div id="calculator1" class="desmos"></div>
+<script>
+var elt1 = document.getElementById("calculator1");
+var calculator1 = Desmos.GraphingCalculator(elt1, {
+    expressions: false
+});
+calculator1.setExpression({id:"graph1_1", latex:"[(-2,-0.9),(-1,-0.6),(2,0.8),(-0.05,0.05)]"});
+calculator1.setExpression({id:"graph1_2", latex:"y = 0.5x"});
+calculator1.setExpression({id:"graph1_3", latex:"y=-0.0757875x^3-0.0341208x^2+0.72815x+0.0864833"});
+calculator1.setMathBounds({
+    left: -4,
+    right: 4,
+    bottom: -2,
+    top: 2
+});
+</script>
+
 <p>Tables and figures use standard markdown syntax. You can also use
 gifs.</p>
 <figure>
-<img src="./angle_from_cosine.gif" title="alt text"
+<img src="./angle_from_cosine.gif" title="Constructing θ from cosθ"
 alt="Constructing \theta from \cos\theta" />
 <figcaption aria-hidden="true">Constructing <span
 class="math inline">\theta</span> from <span
@@ -227,5 +250,22 @@ counters to auto-number definitions/figures/etc.
 <p>The Lua file <code>filter.lua</code> deals with converting shorthand
 environments into the underlying HTML divs. Code cells are implemented
 with <a href="https://sagecell.sagemath.org">SageCell</a>.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>HTML is a nice alternative to LaTeX because it supports,
+among other things, interactive notes: editable / runnable code,
+interactive graphs, animated figures. Markdown is also easier to write
+than LaTeX.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You can also set up an alias in your
+<code>~/.bashrc</code> file.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Inline math uses single dollar signs. Bracket syntax for
+display math is not supported.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 </body>
 </html>

@@ -1,9 +1,9 @@
 # `classnotes-html`
 _markdown-to-html for lectures_
 
-This is a pipeline for writing notes in markdown and converting them to pretty pseudo-LaTeX'd HTML. It comes with a custom style file, KaTeX, and some pre-defined environments and shorthands for things that I do. It is _very_ minimal compared to my LaTeX package [classnotes](https://github.com/neilrathi/classnotes).
+This is a pipeline for writing notes in markdown and converting them to pretty pseudo-LaTeX'd HTML.[^1] It comes with KaTeX, 'interactive' functions, and pre-defined theorem environments. It is based on my LaTeX package [classnotes](https://github.com/neilrathi/classnotes).
 
-Obviously there is a reasonable amount going on behind-the-scenes, but most of the work is done with pandoc. To transform a markdown doc into HTML, run
+Obviously there is a reasonable amount going on behind-the-scenes, but most of the work is done with pandoc. To transform a markdown doc into HTML, run[^2]
 ```bash
 pandoc -c style.css --include-in-header header.html --katex --lua-filter=filter.lua -s FILE.md -o FILE.html
 ```
@@ -18,7 +18,7 @@ There are four custom 'theorem-like' environments: `thrm`, `defn`, `postulate`, 
 A loss function $J : \Theta \to \mathbf{R}$ is a _distance metric_ that quantifies how far functions parametrized by $\theta$ deviate in their output from an oracle.
 ```
 
-Display math uses double dollar \$\$ wrappers. Say we have a function
+Display math uses double dollar \$\$ wrappers.[^3] Say we have a function
 $$
 J(\theta) = \frac{1}{2N} \sum_{i=1}^{N} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right)^2
 $$
@@ -39,9 +39,17 @@ for _ in range(1000):
 print(w)
 ```
 
+Graphs are automatically constructed from equations using the Desmos API.
+
+```{.graph left=-4 right=4 bottom=-2 top=2}
+[(-2,-0.9),(-1,-0.6),(2,0.8),(-0.05,0.05)]
+y = 0.5x
+y=-0.0757875x^3-0.0341208x^2+0.72815x+0.0864833
+```
+
 Tables and figures use standard markdown syntax. You can also use gifs.
 
-![Constructing $\theta$ from $\cos\theta$](./angle_from_cosine.gif "alt text")
+![Constructing $\theta$ from $\cos\theta$](./angle_from_cosine.gif "Constructing θ from cosθ")
 
 Tables are rendered as in the `booktabs` package.
 
@@ -54,3 +62,7 @@ wahoo | wahooo
 Pandoc is doing most of the conversion. The `style.css` file contains all CSS used; most of this is standard. I use CSS3 counters to auto-number definitions/figures/etc. `header.html` imports important KaTeX information.
 
 The Lua file `filter.lua` deals with converting shorthand environments into the underlying HTML divs. Code cells are implemented with [SageCell](https://sagecell.sagemath.org).
+
+[^1]: HTML is a nice alternative to LaTeX because it supports, among other things, interactive notes: editable / runnable code, interactive graphs, animated figures. Markdown is also easier to write than LaTeX.
+[^2]: You can also set up an alias in your `~/.bashrc` file.
+[^3]: Inline math uses single dollar signs. Bracket syntax for display math is not supported.

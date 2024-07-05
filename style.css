@@ -7,7 +7,7 @@ body {
   margin:0 auto;
   font: 14px/1.5 Georgia, serif;
   font-weight:400;
-  counter-reset: postulate thrm defn lemma figures tables;
+  counter-reset: postulate thrm defn lemma corollary figures tables;
 }
 
 h1 {
@@ -180,21 +180,21 @@ div.lemma {
 div.postulate {
   counter-increment: postulate;
 }
+div.corollary {
+  counter-increment: corollary;
+}
 
 div.thrm::before {
-  counter-increment: thrm; 
   content: "Theorem " counter(thrm) ". ";
   font-weight: bold; 
 }
 
 div.postulate::before {
-  counter-increment: postulate; 
   content: "Postulate " counter(postulate) ". ";
   font-weight: bold; 
 }
 
 div.lemma::before {
-  counter-increment: lemma; 
   content: "Lemma " counter(lemma) ". "; 
   font-weight: bold;
 }
@@ -204,8 +204,25 @@ div.defn::before {
   font-weight: bold;
 }
 
+div.corollary::before {
+  content: "Corollary " counter(corollary) ". ";
+  font-weight: bold; 
+}
+
 div.box p {
   margin-bottom: 0px;
+}
+
+div.proof::before {
+  content: "Proof. ";
+  font-style: italic; 
+}
+
+.proof-square {
+  float: right;
+  width: 10px;
+  height: 10px;
+  background-color: black;
 }
 
 button.sagecell_evalButton.ui-button.ui-corner-all.ui-widget {
@@ -285,4 +302,19 @@ figure {
 
 figure figcaption:before {
   content: 'Figure ' counter(figures) '. ';
+}
+
+.footnotes {
+  min-width: 80%;
+}
+
+.footnotes p {
+  margin-bottom: 0px;
+}
+
+.desmos {
+  width: 70%;
+  height: 300px;
+  margin: auto;
+  margin-bottom: 20px;
 }
