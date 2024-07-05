@@ -58,7 +58,14 @@ function CodeBlock(el)
                          '});\n' ..
                          '</script>\n'
 
-        return pandoc.RawBlock('html', div_content .. script_content)
+        local caption = el.attributes.caption or ""
+        local figure_content = '<figure>\n' ..
+                               div_content ..
+                               script_content ..
+                               '<figcaption>' .. caption .. '</figcaption>\n' ..
+                               '</figure>\n'
+
+        return pandoc.RawBlock('html', figure_content)
     end
 
     if has_value(keywords, class) then

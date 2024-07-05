@@ -41,7 +41,7 @@ print(w)
 
 Graphs are automatically constructed from equations using the Desmos API.
 
-```{.graph left=-4 right=4 bottom=-2 top=2}
+```{.graph left=-4 right=4 bottom=-2 top=2 caption="Overfitting"}
 [(-2,-0.9),(-1,-0.6),(2,0.8),(-0.05,0.05)]
 y = 0.5x
 y=-0.0757875x^3-0.0341208x^2+0.72815x+0.0864833

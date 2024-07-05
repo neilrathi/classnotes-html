@@ -269,6 +269,10 @@ div.sagecell_sessionOutput {
   max-height: none;
 }  
 
+div.sagecell_output_elements {
+  margin-top: -13.5px;
+}
+
 table {
   width: auto;
   border-collapse: collapse;
@@ -313,8 +317,7 @@ figure figcaption:before {
 }
 
 .desmos {
-  width: 70%;
   height: 300px;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 7.5px;
 }
